@@ -21,8 +21,14 @@
 
     body{
       font-family:'Poppins',sans-serif;
-      background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
-      color:white;
+      background:linear-gradient(
+        135deg,
+        #ffd6e7,
+        #ffc2d1,
+        #ffe5ec,
+        #f9bec7
+      );
+      color:#5c374c;
       overflow:hidden;
       height:100vh;
     }
@@ -32,7 +38,7 @@
       width:100%;
       height:100%;
       background-image:
-      radial-gradient(circle, rgba(255,255,255,0.25) 1px, transparent 1px);
+      radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px);
       background-size:40px 40px;
       animation:moveBg 20s linear infinite;
       z-index:-1;
@@ -60,13 +66,13 @@
 
     .card{
       max-width:850px;
-      background:rgba(255,255,255,0.08);
-      backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,0.15);
+      background:rgba(255,255,255,0.45);
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(255,255,255,0.5);
       border-radius:30px;
       padding:50px;
       text-align:center;
-      box-shadow:0 0 40px rgba(0,0,0,0.4);
+      box-shadow:0 10px 40px rgba(255,182,193,0.35);
       animation:fadeUp 1s ease;
     }
 
@@ -87,8 +93,9 @@
     }
 
     .highlight{
-      color:#facc15;
+      color:#d63384;
       font-style:italic;
+      font-weight:600;
     }
 
     button{
@@ -99,13 +106,15 @@
       font-size:1rem;
       font-weight:600;
       cursor:pointer;
-      background:white;
-      color:#0f172a;
+      background:#ff8fab;
+      color:white;
       transition:0.3s;
+      box-shadow:0 5px 15px rgba(255,143,171,0.4);
     }
 
     button:hover{
       transform:scale(1.05);
+      background:#fb6f92;
     }
 
     #messagePage{
@@ -151,7 +160,7 @@
 
   <div class="card">
 
-    <h1>Terima Kasih Mentor 🌟</h1>
+    <h1>Terima Kasih Mentor 🌸</h1>
 
     <p>
       Sebuah pesan kecil untuk seseorang
@@ -159,7 +168,7 @@
     </p>
 
     <button id="openBtn">
-      Buka Pesan
+      Buka Pesan 💌
     </button>
 
   </div>
@@ -171,7 +180,7 @@
 
   <div class="card">
 
-    <h2>Pesan Perpisahan</h2>
+    <h2>Pesan Perpisahan ✨</h2>
 
     <p>
       Tidak terasa masa magang sudah selesai.
@@ -203,11 +212,11 @@
     </p>
 
     <h3>
-      ✨ Terima kasih untuk semuanya ✨
+      🌷 Terima kasih untuk semuanya 🌷
     </h3>
 
     <button id="backBtn">
-      Kembali
+      Kembali 💖
     </button>
 
   </div>
