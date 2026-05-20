@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Terima Kasih Mentor</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -19,10 +21,10 @@
 
     body{
       font-family:'Poppins',sans-serif;
-      min-height:100vh;
-      overflow-x:hidden;
-      color:white;
       background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+      color:white;
+      overflow:hidden;
+      height:100vh;
     }
 
     .particles{
@@ -45,80 +47,42 @@
       }
     }
 
-    .hero{
-      min-height:100vh;
+    .page{
+      width:100%;
+      height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
       padding:20px;
-      text-align:center;
+      position:absolute;
+      transition:1s;
     }
 
     .card{
-      max-width:750px;
+      max-width:850px;
       background:rgba(255,255,255,0.08);
       backdrop-filter:blur(12px);
-      border:1px solid rgba(255,255,255,0.2);
+      border:1px solid rgba(255,255,255,0.15);
       border-radius:30px;
       padding:50px;
+      text-align:center;
       box-shadow:0 0 40px rgba(0,0,0,0.4);
       animation:fadeUp 1s ease;
     }
 
-    .card h1{
+    h1{
       font-size:3rem;
       margin-bottom:20px;
     }
 
-    .subtitle{
-      line-height:1.9;
-      opacity:0.9;
-      font-size:1.1rem;
-    }
-
-    button{
-      margin-top:30px;
-      padding:15px 35px;
-      border:none;
-      border-radius:50px;
-      font-size:1rem;
-      font-weight:600;
-      cursor:pointer;
-      transition:0.3s;
-      background:white;
-      color:#0f172a;
-    }
-
-    button:hover{
-      transform:scale(1.05);
-    }
-
-    .message{
-      padding:50px 20px 100px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-
-    .message-card{
-      max-width:850px;
-      background:rgba(255,255,255,0.08);
-      backdrop-filter:blur(10px);
-      border-radius:25px;
-      border:1px solid rgba(255,255,255,0.15);
-      padding:50px;
-      box-shadow:0 0 30px rgba(0,0,0,0.3);
-      animation:fadeUp 1s ease;
-    }
-
-    .message-card h2{
-      font-size:2rem;
-      margin-bottom:30px;
-    }
-
-    .message-card p{
-      line-height:2;
+    h2{
       margin-bottom:25px;
+      font-size:2rem;
+    }
+
+    p{
+      line-height:2;
+      margin-bottom:20px;
       font-size:1.05rem;
     }
 
@@ -127,13 +91,29 @@
       font-style:italic;
     }
 
-    .message-card h3{
-      text-align:center;
-      margin-top:40px;
+    button{
+      margin-top:25px;
+      padding:15px 35px;
+      border:none;
+      border-radius:50px;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      background:white;
+      color:#0f172a;
+      transition:0.3s;
     }
 
-    .hidden{
-      display:none;
+    button:hover{
+      transform:scale(1.05);
+    }
+
+    #messagePage{
+      left:100%;
+    }
+
+    .show-message{
+      transform:translateX(-100%);
     }
 
     @keyframes fadeUp{
@@ -149,129 +129,114 @@
 
     @media(max-width:768px){
 
-      .card,
-      .message-card{
+      .card{
         padding:30px;
       }
 
-      .card h1{
+      h1{
         font-size:2.2rem;
       }
 
     }
+
   </style>
 </head>
 
 <body>
 
-  <div class="particles"></div>
+<div class="particles"></div>
 
-  <section class="hero">
+<!-- HALAMAN AWAL -->
+<section class="page" id="homePage">
 
-    <div class="card">
+  <div class="card">
 
-      <h1>Terima Kasih Mentor 🌟</h1>
+    <h1>Terima Kasih Mentor 🌟</h1>
 
-      <p class="subtitle">
-        Sebuah pesan kecil untuk seseorang yang telah membimbing saya
-        selama masa magang.
-      </p>
+    <p>
+      Sebuah pesan kecil untuk seseorang
+      yang telah membimbing saya selama masa magang.
+    </p>
 
-      <button id="openBtn">
-        Buka Pesan
-      </button>
+    <button id="openBtn">
+      Buka Pesan
+    </button>
 
-    </div>
+  </div>
 
-  </section>
+</section>
 
-  <section class="message hidden" id="messageBox">
+<!-- HALAMAN PESAN -->
+<section class="page" id="messagePage">
 
-    <div class="message-card">
+  <div class="card">
 
-      <h2>Pesan Perpisahan</h2>
+    <h2>Pesan Perpisahan</h2>
 
-      <p>
-        Tidak terasa masa magang sudah selesai.
-        Terima kasih karena sudah membimbing saya bukan hanya dalam pekerjaan,
-        tetapi juga dalam cara berpikir dan menghadapi tantangan.
-      </p>
+    <p>
+      Tidak terasa masa magang sudah selesai.
+      Terima kasih karena sudah membimbing saya
+      bukan hanya dalam pekerjaan,
+      tetapi juga dalam cara berpikir dan menghadapi tantangan.
+    </p>
 
-      <p>
-        Saya sangat bersyukur bisa belajar dari mentor yang sabar dan suportif.
-        Banyak pengalaman dan pelajaran berharga yang akan selalu saya ingat.
-      </p>
+    <p>
+      Saya sangat bersyukur bisa belajar
+      dari mentor yang sabar dan suportif.
+      Banyak pengalaman dan pelajaran berharga
+      yang akan selalu saya ingat.
+    </p>
 
-      <p>
-        Mohon maaf jika selama magang masih banyak kekurangan.
-        Semoga semua kebaikan yang diberikan dibalas dengan kesuksesan,
-        kesehatan, dan kebahagiaan.
-      </p>
+    <p>
+      Mohon maaf jika selama magang
+      masih banyak kekurangan.
+      Semoga semua kebaikan yang diberikan
+      dibalas dengan kesuksesan,
+      kesehatan, dan kebahagiaan.
+    </p>
 
-      <p class="highlight">
-        “Awalnya saya datang sebagai anak magang yang masih banyak bingung,
-        tetapi saya pulang membawa banyak pengalaman dan pelajaran berharga.”
-      </p>
+    <p class="highlight">
+      “Awalnya saya datang sebagai anak magang
+      yang masih banyak bingung,
+      tetapi saya pulang membawa banyak pengalaman
+      dan pelajaran berharga.”
+    </p>
 
-      <h3>
-        ✨ Terima kasih untuk semuanya ✨
-      </h3>
+    <h3>
+      ✨ Terima kasih untuk semuanya ✨
+    </h3>
 
-      <button id="musicBtn">
-        Putar Musik 🎵
-      </button>
+    <button id="backBtn">
+      Kembali
+    </button>
 
-    </div>
+  </div>
 
-  </section>
+</section>
 
-  <audio id="bgMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-  </audio>
+<script>
 
-  <script>
+  const openBtn = document.getElementById('openBtn');
+  const backBtn = document.getElementById('backBtn');
 
-    const openBtn = document.getElementById('openBtn');
-    const messageBox = document.getElementById('messageBox');
+  const homePage = document.getElementById('homePage');
+  const messagePage = document.getElementById('messagePage');
 
-    const musicBtn = document.getElementById('musicBtn');
-    const bgMusic = document.getElementById('bgMusic');
+  openBtn.addEventListener('click', () => {
 
-    openBtn.addEventListener('click', () => {
+    homePage.classList.add('show-message');
+    messagePage.classList.add('show-message');
 
-      messageBox.classList.remove('hidden');
+  });
 
-      messageBox.scrollIntoView({
-        behavior:'smooth'
-      });
+  backBtn.addEventListener('click', () => {
 
-    });
+    homePage.classList.remove('show-message');
+    messagePage.classList.remove('show-message');
 
-    let isPlaying = false;
+  });
 
-    musicBtn.addEventListener('click', () => {
-
-      if(!isPlaying){
-
-        bgMusic.play();
-
-        musicBtn.innerText = 'Pause Musik ⏸';
-
-        isPlaying = true;
-
-      }else{
-
-        bgMusic.pause();
-
-        musicBtn.innerText = 'Putar Musik 🎵';
-
-        isPlaying = false;
-
-      }
-
-    });
-
-  </script>
+</script>
 
 </body>
 </html>
