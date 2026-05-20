@@ -2,32 +2,193 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Terima Kasih Mentor</title>
 
-  <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      min-height:100vh;
+      overflow-x:hidden;
+      color:white;
+      background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    }
+
+    .particles{
+      position:fixed;
+      width:100%;
+      height:100%;
+      background-image:
+      radial-gradient(circle, rgba(255,255,255,0.25) 1px, transparent 1px);
+      background-size:40px 40px;
+      animation:moveBg 20s linear infinite;
+      z-index:-1;
+    }
+
+    @keyframes moveBg{
+      from{
+        transform:translateY(0);
+      }
+      to{
+        transform:translateY(-40px);
+      }
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+      text-align:center;
+    }
+
+    .card{
+      max-width:750px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.2);
+      border-radius:30px;
+      padding:50px;
+      box-shadow:0 0 40px rgba(0,0,0,0.4);
+      animation:fadeUp 1s ease;
+    }
+
+    .card h1{
+      font-size:3rem;
+      margin-bottom:20px;
+    }
+
+    .subtitle{
+      line-height:1.9;
+      opacity:0.9;
+      font-size:1.1rem;
+    }
+
+    button{
+      margin-top:30px;
+      padding:15px 35px;
+      border:none;
+      border-radius:50px;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+      background:white;
+      color:#0f172a;
+    }
+
+    button:hover{
+      transform:scale(1.05);
+    }
+
+    .message{
+      padding:50px 20px 100px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .message-card{
+      max-width:850px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
+      border-radius:25px;
+      border:1px solid rgba(255,255,255,0.15);
+      padding:50px;
+      box-shadow:0 0 30px rgba(0,0,0,0.3);
+      animation:fadeUp 1s ease;
+    }
+
+    .message-card h2{
+      font-size:2rem;
+      margin-bottom:30px;
+    }
+
+    .message-card p{
+      line-height:2;
+      margin-bottom:25px;
+      font-size:1.05rem;
+    }
+
+    .highlight{
+      color:#facc15;
+      font-style:italic;
+    }
+
+    .message-card h3{
+      text-align:center;
+      margin-top:40px;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:768px){
+
+      .card,
+      .message-card{
+        padding:30px;
+      }
+
+      .card h1{
+        font-size:2.2rem;
+      }
+
+    }
+  </style>
 </head>
+
 <body>
 
   <div class="particles"></div>
 
   <section class="hero">
+
     <div class="card">
+
       <h1>Terima Kasih Mentor 🌟</h1>
 
       <p class="subtitle">
-        Sebuah pesan kecil untuk seseorang yang telah membimbing saya selama masa magang.
+        Sebuah pesan kecil untuk seseorang yang telah membimbing saya
+        selama masa magang.
       </p>
 
-      <button id="openBtn">Buka Pesan</button>
+      <button id="openBtn">
+        Buka Pesan
+      </button>
+
     </div>
+
   </section>
 
   <section class="message hidden" id="messageBox">
+
     <div class="message-card">
+
       <h2>Pesan Perpisahan</h2>
 
       <p>
@@ -52,16 +213,65 @@
         tetapi saya pulang membawa banyak pengalaman dan pelajaran berharga.”
       </p>
 
-      <h3>✨ Terima kasih untuk semuanya ✨</h3>
+      <h3>
+        ✨ Terima kasih untuk semuanya ✨
+      </h3>
 
-      <button id="musicBtn">Putar Musik 🎵</button>
+      <button id="musicBtn">
+        Putar Musik 🎵
+      </button>
+
     </div>
+
   </section>
 
   <audio id="bgMusic" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
 
-  <script src="script.js"></script>
+  <script>
+
+    const openBtn = document.getElementById('openBtn');
+    const messageBox = document.getElementById('messageBox');
+
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+
+    openBtn.addEventListener('click', () => {
+
+      messageBox.classList.remove('hidden');
+
+      messageBox.scrollIntoView({
+        behavior:'smooth'
+      });
+
+    });
+
+    let isPlaying = false;
+
+    musicBtn.addEventListener('click', () => {
+
+      if(!isPlaying){
+
+        bgMusic.play();
+
+        musicBtn.innerText = 'Pause Musik ⏸';
+
+        isPlaying = true;
+
+      }else{
+
+        bgMusic.pause();
+
+        musicBtn.innerText = 'Putar Musik 🎵';
+
+        isPlaying = false;
+
+      }
+
+    });
+
+  </script>
+
 </body>
 </html>
