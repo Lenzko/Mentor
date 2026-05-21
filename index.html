@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -66,7 +65,6 @@
       justify-content:center;
       align-items:center;
       padding:30px 20px;
-      transition:0.8s ease;
     }
 
     .card{
@@ -123,14 +121,14 @@
       background:#fb6f92;
     }
 
+    #homePage{
+      display:flex;
+    }
+
     #messagePage{
       display:none;
       padding-top:60px;
       padding-bottom:60px;
-    }
-
-    .active{
-      display:flex !important;
     }
 
     @keyframes fadeUp{
@@ -186,7 +184,7 @@
 <div class="particles"></div>
 
 <!-- HALAMAN PERTAMA -->
-<section class="page active" id="homePage">
+<section class="page" id="homePage">
 
   <div class="card">
 
@@ -256,29 +254,39 @@
 
 <script>
 
+document.addEventListener('DOMContentLoaded', function () {
+
   const openBtn = document.getElementById('openBtn');
   const backBtn = document.getElementById('backBtn');
 
   const homePage = document.getElementById('homePage');
   const messagePage = document.getElementById('messagePage');
 
-  openBtn.addEventListener('click', () => {
+  openBtn.addEventListener('click', function () {
 
-    homePage.classList.remove('active');
-    messagePage.classList.add('active');
+    homePage.style.display = 'none';
+    messagePage.style.display = 'flex';
 
-    window.scrollTo(0,0);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+  });
+
+  backBtn.addEventListener('click', function () {
+
+    messagePage.style.display = 'none';
+    homePage.style.display = 'flex';
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
 
   });
 
-  backBtn.addEventListener('click', () => {
-
-    messagePage.classList.remove('active');
-    homePage.classList.add('active');
-
-    window.scrollTo(0,0);
-
-  });
+});
 
 </script>
 
