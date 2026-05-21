@@ -19,11 +19,11 @@
       box-sizing:border-box;
     }
 
-    html,
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
-      width:100%;
-      min-height:100%;
-      overflow-x:hidden;
       font-family:'Poppins',sans-serif;
       background:linear-gradient(
         135deg,
@@ -33,10 +33,7 @@
         #f9bec7
       );
       color:#5c374c;
-    }
-
-    body{
-      position:relative;
+      overflow-x:hidden;
     }
 
     .particles{
@@ -59,12 +56,11 @@
     }
 
     .page{
-      width:100%;
       min-height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
-      padding:30px 20px;
+      padding:40px 20px;
     }
 
     .card{
@@ -121,16 +117,6 @@
       background:#fb6f92;
     }
 
-    #homePage{
-      display:flex;
-    }
-
-    #messagePage{
-      display:none;
-      padding-top:60px;
-      padding-bottom:60px;
-    }
-
     @keyframes fadeUp{
       from{
         opacity:0;
@@ -145,8 +131,8 @@
     @media(max-width:768px){
 
       .page{
-        align-items:flex-start;
         padding:40px 15px;
+        align-items:flex-start;
       }
 
       .card{
@@ -155,13 +141,12 @@
       }
 
       h1{
-        font-size:2.1rem;
+        font-size:2.2rem;
         line-height:1.3;
       }
 
       h2{
         font-size:1.7rem;
-        line-height:1.4;
       }
 
       p{
@@ -183,8 +168,8 @@
 
 <div class="particles"></div>
 
-<!-- HALAMAN PERTAMA -->
-<section class="page" id="homePage">
+<!-- HALAMAN AWAL -->
+<section class="page">
 
   <div class="card">
 
@@ -195,7 +180,7 @@
       yang telah membimbing saya selama masa magang.
     </p>
 
-    <button id="openBtn">
+    <button onclick="scrollToMessage()">
       Buka Pesan 💌
     </button>
 
@@ -203,7 +188,7 @@
 
 </section>
 
-<!-- HALAMAN KEDUA -->
+<!-- HALAMAN PESAN -->
 <section class="page" id="messagePage">
 
   <div class="card">
@@ -244,7 +229,7 @@
       🌷 Terima kasih untuk semuanya 🌷
     </h3>
 
-    <button id="backBtn">
+    <button onclick="scrollToTopPage()">
       Kembali 💖
     </button>
 
@@ -254,39 +239,22 @@
 
 <script>
 
-document.addEventListener('DOMContentLoaded', function () {
+function scrollToMessage(){
 
-  const openBtn = document.getElementById('openBtn');
-  const backBtn = document.getElementById('backBtn');
-
-  const homePage = document.getElementById('homePage');
-  const messagePage = document.getElementById('messagePage');
-
-  openBtn.addEventListener('click', function () {
-
-    homePage.style.display = 'none';
-    messagePage.style.display = 'flex';
-
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-
+  document.getElementById('messagePage').scrollIntoView({
+    behavior:'smooth'
   });
 
-  backBtn.addEventListener('click', function () {
+}
 
-    messagePage.style.display = 'none';
-    homePage.style.display = 'flex';
+function scrollToTopPage(){
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
   });
 
-});
+}
 
 </script>
 
