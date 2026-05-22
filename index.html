@@ -177,6 +177,40 @@
       pointer-events:none;
     }
 
+    audio{
+      width:100%;
+      margin-top:20px;
+      border-radius:20px;
+    }
+
+    .final-message{
+      margin-top:35px;
+      display:none;
+      animation:fadeIn 1.5s ease;
+    }
+
+    .final-inner{
+      background:rgba(255,255,255,0.25);
+      border:1px solid rgba(255,255,255,0.4);
+      border-radius:25px;
+      padding:30px;
+    }
+
+    #musicQuotes{
+      margin-top:25px;
+      min-height:90px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    #quoteText{
+      transition:0.5s;
+      text-align:center;
+      font-size:1.05rem;
+      line-height:2;
+    }
+
     @keyframes fall{
       to{
         transform:translateY(700px) rotate(360deg);
@@ -267,6 +301,10 @@
         text-align:center;
       }
 
+      #quoteText{
+        text-align:center;
+      }
+
     }
 
   </style>
@@ -284,7 +322,7 @@
     <h1>Terima Kasih Ibu Yustina 🌸</h1>
 
     <p style="text-align:center;">
-      Sebuah pesan kecil untuk Ibu Yustina
+      Sebuah pesan singkat untuk Ibu Yustina
       yang telah membimbing saya selama masa magang ✨
     </p>
 
@@ -363,9 +401,77 @@
       Mulai Game 🎮
     </button>
 
-    <button onclick="scrollToTopPage()">
-      Kembali ke Atas 💖
+    <button
+      id="musicBtn"
+      onclick="scrollToMusicPage()"
+      style="display:none;">
+      Lanjut Musik 🎵
     </button>
+
+  </div>
+
+</section>
+
+<!-- HALAMAN MUSIK -->
+<section class="page" id="musicPage">
+
+  <div class="card">
+
+    <h2>Special Song 🎵</h2>
+
+    <p style="text-align:center;">
+      Lagu kecil untuk menemani
+      ucapan terima kasih ini 🌸
+    </p>
+
+    <!-- QUOTES -->
+    <div id="musicQuotes">
+
+      <p class="highlight" id="quoteText">
+        “Terima kasih untuk setiap ilmu
+        dan pengalaman berharga yang diberikan.”
+      </p>
+
+    </div>
+
+    <!-- AUDIO -->
+    <audio id="mentorSong" controls>
+
+      <!-- GANTI DENGAN FILE MUSIK -->
+      <source src="musik.mp3" type="audio/mpeg">
+
+      Browser kamu tidak mendukung audio.
+
+    </audio>
+
+    <!-- FINAL MESSAGE -->
+    <div class="final-message" id="finalCard">
+
+      <div class="final-inner">
+
+        <h2>
+          Final Message 💖
+        </h2>
+
+        <p>
+          Terima kasih sudah menjadi mentor
+          yang luar biasa selama masa magang 🌸
+        </p>
+
+        <p>
+          Banyak pelajaran,
+          pengalaman,
+          dan kenangan yang akan selalu diingat.
+        </p>
+
+        <p class="highlight">
+          “Beberapa pertemuan mungkin singkat,
+          tetapi kenangannya bisa bertahan lama.”
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -376,6 +482,7 @@
 let score = 0;
 let gameInterval;
 let finishShown = false;
+let quoteInterval;
 
 function scrollToMessage(){
 
@@ -393,10 +500,9 @@ function scrollToGame(){
 
 }
 
-function scrollToTopPage(){
+function scrollToMusicPage(){
 
-  window.scrollTo({
-    top:0,
+  document.getElementById('musicPage').scrollIntoView({
     behavior:'smooth'
   });
 
@@ -414,7 +520,11 @@ function startGame(){
 
   document.getElementById('gameArea').innerHTML = '';
 
-  document.getElementById('startBtn').style.display = 'none';
+  document.getElementById('startBtn').style.display =
+  'none';
+
+  document.getElementById('musicBtn').style.display =
+  'none';
 
   gameInterval = setInterval(createFlower, 700);
 
@@ -512,7 +622,77 @@ function showFinishAnimation(){
 
   }
 
+  document.getElementById('musicBtn').style.display =
+  'inline-block';
+
 }
+
+const quotes = [
+
+  "“Terima kasih untuk setiap ilmu dan pengalaman berharga yang diberikan.”",
+
+  "“Kebaikan kecil sering menjadi kenangan terbesar.”",
+
+  "“Bimbingan yang tulus akan selalu diingat.”",
+
+  "“Pengalaman terbaik datang dari orang-orang baik.”",
+
+  "“Terima kasih telah menjadi mentor yang sabar dan suportif 🌸”"
+
+];
+
+let quoteIndex = 0;
+
+const quoteText =
+document.getElementById('quoteText');
+
+const mentorSong =
+document.getElementById('mentorSong');
+
+mentorSong.addEventListener('play', () => {
+
+  clearInterval(quoteInterval);
+
+  quoteInterval = setInterval(() => {
+
+    quoteIndex++;
+
+    if(quoteIndex >= quotes.length){
+
+      quoteIndex = 0;
+
+    }
+
+    quoteText.style.opacity = 0;
+
+    setTimeout(() => {
+
+      quoteText.innerText =
+      quotes[quoteIndex];
+
+      quoteText.style.opacity = 1;
+
+    },300);
+
+  },4000);
+
+});
+
+mentorSong.addEventListener('ended', () => {
+
+  clearInterval(quoteInterval);
+
+  document.getElementById('musicQuotes').style.display =
+  'none';
+
+  document.getElementById('finalCard').style.display =
+  'block';
+
+  document.getElementById('finalCard').scrollIntoView({
+    behavior:'smooth'
+  });
+
+});
 
 </script>
 
