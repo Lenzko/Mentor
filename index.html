@@ -18,7 +18,67 @@
       padding:0;
       box-sizing:border-box;
     }
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:30px;
+}
+.rtk{
+  color: #E6C068;
+  font-style: italic;
+  font-weight: 600;
 
+  background: linear-gradient(
+    90deg,
+    #b8860b 0%,
+    #E6C068 35%,
+    #fff4c2 50%,
+    #E6C068 65%,
+    #b8860b 100%
+  );
+
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 6px rgba(230,192,104,0.35);
+
+  animation: rtkShine 3s linear infinite;
+}
+
+@keyframes rtkShine{
+  to{
+    background-position: 200% center;
+  }
+}
+.gallery-grid img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:22px;
+  border:3px solid rgba(255,255,255,0.45);
+  box-shadow:0 10px 25px rgba(255,182,193,0.25);
+  transition:0.4s;
+}
+
+.gallery-grid img:hover{
+  transform:scale(1.03);
+}
+
+@media(max-width:768px){
+
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-grid img{
+    height:220px;
+  }
+
+}
     html{
       scroll-behavior:smooth;
     }
@@ -589,7 +649,52 @@
         “Beberapa orang hadir bukan hanya
         untuk ditemui, tetapi untuk diingat.”
       </p>
+<button onclick="scrollToGalleryPage()">
+  Lihat Kenangan Lain ✨
+</button>
+    </div>
 
+  </div>
+
+</section>
+       <!-- HALAMAN GALERI -->
+<section class="page" id="galleryPage">
+
+  <div class="card">
+
+    <h2>🌸 More Memories 🌸</h2>
+
+    <p style="text-align:center;">
+      Beberapa kenangan kecil yang mungkin sederhana,
+      tapi akan selalu terasa spesial ✨
+    </p>
+
+    <!-- 3 FOTO -->
+    <div class="gallery-grid">
+
+      <img src="foto1.png" alt="Kenangan 1">
+
+      <img src="fotouj.jpg" alt="Kenangan 2">
+
+      <img src="foto3.png" alt="Kenangan 3">
+
+    </div>
+
+    <!-- CARD KATA -->
+    <div class="memory-card">
+
+      <h3>
+        🌷 Tentang Kenangan 🌷
+      </h3>
+
+      <p>
+        “Mungkin nanti kita akan sibuk dengan jalan masing-masing,
+        tetapi kenangan baik tidak akan pernah benar-benar pergi.”
+      </p>
+
+    <p class="highlight">
+     ✨Yesterday is history, tomorrow is a mystery and today is a gift from Allah ﷻ✨
+    </p>
     </div>
 
   </div>
@@ -612,6 +717,13 @@ function scrollToMessage(){
 function scrollToPhotoPage(){
 
   document.getElementById('photoPage').scrollIntoView({
+    behavior:'smooth'
+  });
+
+}
+  function scrollToGalleryPage(){
+
+  document.getElementById('galleryPage').scrollIntoView({
     behavior:'smooth'
   });
 
